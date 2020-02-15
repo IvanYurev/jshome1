@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+/////////////////1/////////////////////////
+        var i = 2;
+                 while (i <= 100)
+                 {
+                     var j = 2;
+                     var prime=true;
+                     while (j < i)
+                     {
+                         if (i % j == 0)
+                         {
+                        prime=false;
+                         }
+                         j++;
+                     }
+                     if(prime==true)
+                     document.write(i+" ");
+                     i++;
+                 }
+                 document.writeln("<br>");
+                 ///////////////////////////2,3///////////////////////////////////////////////
+                 var basket = [["Хлеб",128],["Молоко",256],["Овощи",512],["Фрукты",64]];
+                 function countBasketPrice(mas){
+                     var money=0;
+                     for(var i=0; i<4;i++){
+                         document.writeln("Цена за: "+mas[i][0]+" Составляет "+mas[i][1]+" руб.");  
+                         document.writeln("<br>");  
+                         money+=mas[i][1];
+                     }
+                     document.writeln("Итоговая стоимость корзины: "+money+ " руб.");
+                 }
+                 countBasketPrice(basket);
+                 ////////////////////////4///////////////////////////
+                 document.writeln("<br>");
+                 for(var i=0;i<10;document.write(i++)){
+                 }
+                 /////////////////////////////5//////////////////////////
+                 document.writeln("<br>");
+                 for(var i=1; i<=20;i++){
+                     for(var j=i;j!=0;j--){
+                        document.write("*");
+                     }
+                    document.writeln("<br>");
+                 }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
