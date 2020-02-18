@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+/////////////////1///////////////////////////////////
+function razbiv(val){ //Разбиение
+var mas=[];
+    while(val/10!=0){
+        var rez=val%10;
+        mas.push(rez);
+      val=(val-rez)/10;
+    }
+    var rezult=new Chislo(mas);
+    if (val<0||val>999){
+    console.log("Неверное число");
+}
+    console.log(rezult);
+}
+function Chislo(mas){   //Конструктор
+    if(isNaN(mas[0]))
+         this.ed=0;
+    else
+         this.ed=mas[0];
+    if(isNaN(mas[1]))
+         this.des=0;
+    else
+         this.des=mas[1];
+    if(isNaN(mas[2]))
+         this.sot=0;
+    else
+          this.sot=mas[2];
+}
+var num=+prompt("Введите число от 0 до 999");
+razbiv(num);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
