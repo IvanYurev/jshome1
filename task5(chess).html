@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+       var num;
+       var num3;
+        var let;
+        var num1;
+        var num2;
+       function chess(){
+        num=8; num3=8;num2=97; let="&#";num1=num2;
+            var table = document.createElement("table");
+            table.className="main";
+            for(var i=0; i<10; i++){
+                var tr=document.createElement("tr");
+                tr.className="colrow";
+                table.appendChild(tr);
+            for(var j=0;j<10;j++){
+                var td=document.createElement("td");
+                td.className="colrow";
+                td.classList.add("colorrow")
+                full(td,i,j);        
+                    //Заполнение
+               if(i%2==0&&j%2!=0){
+                   td.classList.remove("colorrow");
+                   td.classList.add("blackrow");
+               }
+               else if(i%2!=0&&j%2==0){
+                td.classList.remove("colorrow");
+                   td.classList.add("blackrow");
+               }
+               fullLetterAndNumbers(td,i,j);  
+                tr.appendChild(td);
+            }    
+            }
+            document.body.appendChild(table);
+        }
+        function fullLetterAndNumbers(obj,i,j){
+           
+              if(i==0||i==9||j==0||j==9){
+                  obj.className+=" letAndNum";
+                  obj.classList.remove("colorrow");
+                  obj.classList.remove("colrow");
+                  obj.classList.remove("blackrow");
+              }
+              if(j==0&&i!=0&&i!=9){
+                
+                  obj.innerHTML=num;
+                  obj.style.color="black";
+                  num--;
+              }
+             if(j==9&&i!=0&&i!=9){
+                  obj.innerHTML=num3;
+                  obj.style.color="black";
+                  obj.classList.add("reverse")
+                  num3--;
+              }
+              if(i==9&&j!=0&&j!=9){
+                  obj.innerHTML=let+num1+";";
+                  num1++;
+              }
+              if(i==0&&j!=0&&j!=9){
+                  obj.innerHTML=let+num2+";";
+                  obj.classList.add("reverse")
+                  num2++;
+              }
+        }
+        function full(obj,i,j){
+            ///////////////////////////////ладья///////////////////////////
+            if(i==1&&j==1){obj.innerHTML="&#9820;";}
+            else if(i==8&&j==1){obj.innerHTML="&#9814;";}
+            else if(j==8&&i==1){obj.innerHTML="&#9820;";}
+            else if(j==8&&i==8){obj.innerHTML="&#9814;";}  
+            /////////////////////конь////////////////////////////////////// 
+            if(i==1&&j==2){obj.innerHTML="&#9822;";}
+            else if(i==8&&j==2){obj.innerHTML="&#9816;";}
+            else if(j==7&&i==1){obj.innerHTML="&#9822;";}
+            else if(j==7&&i==8){obj.innerHTML="&#9816;";}  
+            ///////////////////////////слон/////////////////////////////////
+            if(i==1&&j==3){obj.innerHTML="&#9821;";}
+            else if(i==8&&j==3){obj.innerHTML="&#9815;";}
+            else if(j==6&&i==1){obj.innerHTML="&#9821;";}
+            else if(j==6&&i==8){obj.innerHTML="&#9815;";}    
+            /////////////////////ферзь////////////////////////////////////////
+            if(i==1&&j==4){obj.innerHTML="&#9819;";}
+            else if(i==8&&j==4){obj.innerHTML="&#9813;";}     
+            //////////////////////////////король//////////////////////////////
+            if(i==1&&j==5){obj.innerHTML="&#9818;";}
+            else if(i==8&&j==5){obj.innerHTML="&#9812;";} 
+            ///////////////////////////////пешки///////////////////////////////
+            if(i==2||i==7){
+                if(j!=0&&j!=9){
+                   if(i==2){
+                obj.innerHTML="&#9823;";}
+                else obj.innerHTML="&#9817;";
+                }
+            }
+            /////////////////для цвета////////////////////////////////////////////
+            if(i==1||i==2){obj.style.color="#000";} 
+            else if(i==7||i==8){ obj.style.color="#fff";}
+        }
+    </script>
+    <style>
+        .main{
+            height: 500px;
+            width: 500px;
+            border: 0;
+            border-spacing: 0;
+            text-align: center;
+        }
+        .colrow{
+            height: 50px;
+            width: 50px;
+            font-size: 30px;
+        }
+        .blackrow{
+            background-color:rgb(126, 61, 61);
+            color: #fff;
+        }
+        .colorrow{
+            background-color: rgb(255, 242, 125);
+        }
+        .letAndNum{
+            height: 50px;
+            width: 25px;  
+              
+        }
+        .reverse{
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <button onclick="chess()">создать</button>
+</body>
+</html>
