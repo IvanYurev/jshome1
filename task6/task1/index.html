@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>.photo{margin-right: 10px;}
+    .PRED{ font-size: 40px; margin-right: 20px;}
+    .NEXT{ font-size: 40px;}
+    </style>
+</head>
+<body>
+</body>
+<script>
+//////////////////Строка для вставки: holod.jpg,holod1.jpg,stir.jpg  (в данном примере)///////////////////////////////////////
+var source="SmallImg/";
+var source1="BigImg/";
+var img;
+var sPrev,sNext;
+var now;
+function create(SRC){
+img=document.createElement("img");
+img.classList.add("photo");
+img.id=SRC;
+img.src=source+SRC;
+img.onclick=Click;////////
+sPrev=document.createElement("a");
+sNext=document.createElement("a");
+sPrev.id="prev";
+sPrev.innerText="<=";
+sNext.id="next";
+sNext.innerText="=>";
+sPrev.classList.add("PRED");
+sNext.classList.add("NEXT");
+sPrev.onclick=slid;
+sNext.onclick=slid;
+document.body.appendChild(img);
+document.body.appendChild(sPrev);
+document.body.appendChild(sNext);
+now=SRC;
+}
+function Click(){
+var get=now;
+var newImg=document.createElement("img");
+newImg.src=source1+get;
+document.body.appendChild(newImg);
+newImg.onerror=function(){ alert("Такой картинки не существует. Проверьте наличие файла.");}
+}
+function slid(){
+var changeImg=document.querySelector("img");
+var id=this.id;
+var num,pred,next;
+var kol=mas.length-1;
+for(var i=0;i<mas.length;i++)   
+    if(mas[i]==now)
+      num=i;
+if(num!=0&&num!=kol){pred=mas[num-1];next=mas[num+1];}
+  else if(num==0){next=mas[num+1],pred=mas[kol];}
+  else if(num==kol){pred=mas[num-1]; next=mas[0];}
+ console.log(pred,next,id); 
+if(id=="prev"){ changeImg.src=source+pred; now=pred;}
+else{changeImg.src=source+next; now=next;}
+}     
+var mas=prompt("Введите название трёх картинок с расширением через запятую").split(","); //Для универсальности скрипта
+create(mas[1]);
+</script>
+</html>
